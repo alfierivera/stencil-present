@@ -30,95 +30,92 @@
 			<div class="slides">
 				<section data-background="#ffffff">
 					<h1><img id="logo" src="img/stencil-logo.svg" /></h1>
-					<h4 id="lead-text">A simple compiler for fast,<br />reactive Web Components</h4>
+					<h4 id="lead-text">Un compilador simple y rápido<br />para componentes web reactivos</h4>
 					<h5><a href="http://stenciljs.com/">stenciljs.com</a></h5>
 				</section>
 				<section>
-					<h2>Outline</h2>
+					<h2>¿Qué vamos a tratar?</h2>
 					<ul>
-						<li>Introduction to Web Components</li>
-						<li>Introduction to Stencil</li>
+						<li>Introducción a Web Components</li>
+						<li>Introducción a Stencil</li>
 						<li>Stencil API</li>
-						<li>Demo time</li>
-						<li>Where to go next</li>
+						<li>Demo</li>
 					</ul>
 				</section>
 				<section>
 					<h2>Web Components</h2>
 					<ul>
-						<li>Natively-supported, standardized JavaScript components</li>
-						<li>Run in every framework or on their own</li>
-						<li>Answer to the shared-component problem</li>
-						<li>Powered by the Custom Element spec</li>
-						<li>Native browser support: Chrome, Safari, good polyfills</li>
+						<li>Componentes Javascript estándar con soporte nativo</li>
+						<li>Se ejecutan en cualquier framework o por sí mismos</li>
+						<li>Respuesta al problema de compartir componentes</li>
+						<li>Cumplen con el estandar de Custom Element</li>
+						<li>Soporte nativo en exploradores 'Evergreen' y excelentes polyfills</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Custom Element Example</h2>
+					<h2>Ejemplo de Custom Element</h2>
 					<pre><code data-trim data-noescape class="html">
-&lt;my-component size="large" theme="light"/&gt;&lt;/my-component&gt;
+&lt;mi-componente tamaño="grande" tema="claro"/&gt;&lt;/mi-componente&gt;
 					</code></pre>
 				</section>
 				<section>
-					<h2>Custom Element Example</h2>
+					<h2>Ejemplo de Custom Element</h2>
 					<pre><code data-trim data-noescape class="typescript">
-class MyComponent extends HTMLElement {
-	constructor() {
-		// Standard DOM/fetch/etc. code...
-	}
+class MiComponente extends HTMLElement {
+	constructor() {}
 	connectedCallback() {}
 	disconnectedCallback() {}
 	attributeChangedCallback() {}
 }
 
-window.customElements.define('my-component', MyComponent);
+window.customElements.define('mi-componente', MiComponente);
 					</code></pre>
 				</section>
 				<section>
-					<h2>Can we make it easier to build Custom Elements?</h2>
+					<h2>¿Podemos hacer que esto sea más fácil?</h2>
 					<ul>
-						<li>Still want framework features</li>
-						<li>Desire to manage bundles of components</li>
-						<li>Many teams are choosing TypeScript</li>
+						<li>Aún queremos utilizar nuestros frameworks de preferencia</li>
+						<li>Aún queremos manejar 'bundles' de componentes</li>
+						<li>Los equipos de desarrollo JS están eligiendo TypeScript</li>
 					</ul>
 				</section>
 				<section>
 					<h2>Stencil: A Compiler for Web Components</h2>
 				</section>
 				<section>
-					<h2>What is Stencil?</h2>
+					<h2>¿Qué es Stencil?</h2>
 					<ul>
-						<li>A compiler that generates Custom Elements, part of the Web Components spec</li>
-						<li>Not a framework: output is 100% standards-compliant Custom Elements</li>
-						<li>Adds powerful framework features to Web Components</li>
-						<li>Created and used heavily by the <a href="http://ionicframework.com/">Ionic Framework</a> team. Ionic 4+ is built on it!</li>
+						<li>Un compilador que genera Custom Elements, que es parte del estándar de Web Components</li>
+						<li>No es un framework: los archivos generados se adhieren 100% al estándar de Web Components</li>
+						<li>Agrega carácteristicas encontradas en frameworks a Web Components</li>
+						<li>Creado y usado por el equipo de <a href="http://ionicframework.com/">Ionic Framework</a>. Ionic 4+ está construido en Stencil</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Why Stencil?</h2>
+					<h2>¿Por qué Stencil?</h2>
 					<ul>
-						<li><b>Performance</b>: Traditional frameworks proving too heavy for demanding mobile Progressive Web Applications</li>
-						<li><b>Stability</b>: Desire to use web standards and avoid constant framework churn</li>
-						<li><b>Interoperability</b>: Ability to create components that work across all major frameworks.</li>
-						<li><b>Familiarity</b>: features from frameworks but in a leaner, standards-compliant package</li>
+						<li><b>Desempeño</b>: Frameworks tradicionales han demostrado ser muy pesados para aplicaciones web progresivas (PWAs)</li>
+						<li><b>Estabilidad</b>: Deseo de usar los estándares web y evitar depender de un framework</li>
+						<li><b>Interoperabilidad</b>: Habilidad de crear componentes que funcionan en todos los frameworks más populares</li>
+						<li><b>Familiarida</b>: Carácteristicas de frameworks, en un paquete más ligero y apegado a los estándares</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Example Stencil Component</h2>
+					<h2>Ejemplo de un componente de Stencil</h2>
 					<pre><code data-trim data-noescape class="typescript">
 						import { Component, Prop } from '@stencil/core';
 
 						@Component({
-						  tag: 'my-name',
-						  styleUrl: 'my-name.scss'
+						  tag: 'mi-nombre',
+						  styleUrl: 'mi-nombre.scss'
 						})
-						export class MyName {
-						  @Prop() name: string;
+						export class MiNombre {
+						  @Prop() nombre: string;
 
 						  render() {
 						    return (
 						      &lt;p&gt;
-						        Hello, my name is {this.name}
+						        Hola, mi nombre es {this.nombre}
 						      &lt;/p&gt;
 						    );
 						  }
@@ -126,48 +123,49 @@ window.customElements.define('my-component', MyComponent);
 					</code></pre>
 				</section>
 				<section>
-					<h2>Stencil-compiled Components have</h2>
+					<h2>Componentes compilados con Stencil tienen</h2>
 					<ul>
-						<li><b>Virtual DOM</b>: fast DOM updates without common DOM performance pitfalls</li>
-						<li><b>Lazy Loading</b>: By default components load asyncronously and can be bundled with related components</li>
-						<li><b>Reactivity</b>: Efficient updates based on property and state changes</li>
+						<li><b>Virtual DOM</b>: Actualizaciones rápidas del DOM sin las trampas comunes de desempeño</li>
+						<li><b>Lazy Loading</b>: Por defectos los componentes cargan de forma asincrónima y pueden ser agrupados con componentes relacionados</li>
+						<li><b>Reactividad</b>: Actualizaciones eficientes basadas en los cambios a propiedades y estados</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Stencil-compiled Components have (cont.)</h2>
+					<h2>Componentes compilados con Stencil tienen (cont.)</h2>
 					<ul>
-						<li><b>High-performance Rendering</b>: async rendering system, similar to React Fiber</li>
-						<li><b>JSX</b>: Popular and familiar markup system pioneered by React</li>
-						<li><b>Server Side Rendering</b>: Hydrate pre-compiled components on the server without a headless browser</li>
+						<li><b>Rendering de alto desempeño</b>: Sistema de rendering asincrónimo, similar a React Fiber</li>
+						<li><b>JSX</b>: Sintax popular y familiar basado en React</li>
+						<li><b>Server Side Rendering</b>: Hidrata componentes pre-compilados en el servidor sin necesidad de un explorador 'headless'</li>
 					</ul>
 				</section>
 				<section>
 					<h2>Stencil API</h2>
 					<ul>
-						<li><b>@Component()</b>: set tag name and associated stylesheet (Sass or plain CSS)</li>
-						<li><b>@Prop()</b>: Create a property on the component</li>
-						<li><b>@State()</b>: local state that should be watched during change detection</li>
-						<li><b>@Event()</b>: Trigger events on a component</li>
-						<li><b>@Listen()</b>: listen for events fired from children</li>
-						<li><b>@Element()</b>: grab the DOM element for this component</li>
+						<li><b>@Component()</b>: Define el nombre de la etiqueta y la hoja de estilos asociada (puede ser CSS o Sass, o algún otro con soporte para rollup)</li>
+						<li><b>@Prop()</b>: Crea una propiedad en el componente</li>
+						<li><b>@State()</b>: Estado local que debe ser observado durante el 'change detection'</li>
+						<li><b>@Event()</b>: Dispara eventos en un componente</li>
+						<li><b>@Listen()</b>: Escucha eventos disparados desde los componentes hijos</li>
+						<li><b>@Element()</b>: Obtiene una referencia del elemento DOM del componente</li>
 					</ul>
 				</section>
 				<section>
 					<h2>Demo time</h2>
 					<p>
-						May the demo gods be with us
+						Ayudame papa dio'
 					</p>
+					<img id="logo" src="img/sasuke.png" />
 				</section>
 				<section>
-					<h2>How is Stencil different from X?</h2>
+					<h2>¿Cómo se diferencia Stencil de X?</h2>
 					<ul>
-						<li><b>Angular/React/Vue/etc.</b>: Stencil builds standards-based web components that run natively in the browser.</li>
-						<li><b>Polymer</b>: Stencil works primarily at build rather than runtime. Outputs vanilla web components. Opinionated around JSX, Virtual DOM, and other framework features.</li>
-						<li><b>Vanilla Web Components</b>: Stencil provides complicated framework features as if you wrote them yourself in vanilla Web Components.</li>
+						<li><b>Angular/React/Vue/etc.</b>: Stencil construye estándar web components que corren nativamente en el explorador.</li>
+						<li><b>Polymer</b>: Stencil funciona al momento de compilar y genera componentes vainilla. Con opiniones alrededor de JSX, Virtual DOM.</li>
+						<li><b>Vanilla Web Components</b>: Stencil provee carácteristicas avanzadas de un framework, como si lo hubieses escrito tu mismo desde cero.</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Getting Started</h2>
+					<h2>Para comenzar</h2>
 					<pre><code data-trim data-noescape class="bash">
 						git clone https://github.com/ionic-team/stencil-starter.git my-app
 						cd my-app
@@ -176,22 +174,7 @@ window.customElements.define('my-component', MyComponent);
 					</code></pre>
 				</section>
 				<section>
-					<h2>Where to go next?</h2>
-					<ul>
-						<li><a target="_blank" href="https://stenciljs.com/docs/my-first-component">Component Basics</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/templating">How Templating/JSX Works</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/decorators">Using Stencil's API</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/events">Sending and listening for Events</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/component-lifecycle">Component Lifecycle Hooks</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/stencil-config">Configuring Stencil Component Collections</a></li>
-					</ul>
-				</section>
-				<section>
-					<h2>Watch the Announcement</h2>
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/UfD-k7aHkQE" frameborder="0" allowfullscreen></iframe>
-				</section>
-				<section>
-					<h2>Community Resources</h2>
+					<h2>Recursos de la comunidad</h2>
 					<ul>
 						<li><a target="_blank" href="https://github.com/ospatil/ng-components-integration">Using a Stencil-built component in Angular</a></li>
 						<li><a target="_blank" href="https://coryrylan.com/blog/create-your-first-web-component-with-stencil-js">Create your First Stencil Component</a></li>
@@ -200,7 +183,7 @@ window.customElements.define('my-component', MyComponent);
 					</ul>
 			</section>
 				<section>
-					<h2>Thanks!</h2>
+					<h2>Gracias!</h2>
 					<ul>
 						<li><a href="http://stenciljs.com/">StencilJS.com</a></li>
 						<li><a href="https://twitter.com/stenciljs">@StencilJS on Twitter</a></li>
